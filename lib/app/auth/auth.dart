@@ -5,5 +5,4 @@ export 'views/login_screen.dart';
 
 //Widgets
 
-
 //Cubits

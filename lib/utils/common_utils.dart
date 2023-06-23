@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CommonUtils {
   static void showSnackbar(
@@ -31,7 +32,7 @@ class CommonUtils {
   }) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (BuildContext ctx) {
         return AlertDialog(
           icon: isError
               ? Icon(
@@ -55,12 +56,44 @@ class CommonUtils {
             TextButton(
               child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(ctx).pop();
               },
             ),
           ],
         );
       },
     );
+  }
+
+  static void navigatePush(BuildContext context, Widget widget) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => widget));
+  }
+
+  static void navigatePushReplacement(BuildContext context, Widget widget) {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => widget));
+  }
+
+  static void navigatePop(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
+  static void navigatePushReplacementAll(BuildContext context, Widget widget) {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (ctx) => widget),
+        (Route<dynamic> route) => false);
+  }
+
+  static void setIsFirstTime() async {
+    bool isViewed = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('onboard', isViewed);
+  }
+
+  static Future<bool> getIsFirstTime() async {
+    print('getting isFirstime Status');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isViewed = prefs.getBool('isFirst') ?? false;
+    return isViewed;
   }
 }
