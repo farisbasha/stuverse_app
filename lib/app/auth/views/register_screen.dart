@@ -34,7 +34,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future getImage({
     required ImageSource source,
   }) async {
-    final pickedFile = await _picker.pickImage(source: source);
+    final pickedFile = await _picker.pickImage(
+        source: source, imageQuality: 80, maxHeight: 400, maxWidth: 400);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);

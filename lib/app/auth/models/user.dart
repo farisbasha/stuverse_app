@@ -10,6 +10,7 @@ class User {
     required this.institutionName,
     required this.image,
     required this.isActive,
+    required this.showContact,
     required this.token,
   });
   late final int id;
@@ -22,7 +23,7 @@ class User {
   late final String district;
   late final String institutionName;
   late final String image;
-
+  late final bool showContact;
   late final bool isActive;
   late final String token;
 
@@ -40,6 +41,7 @@ class User {
 
     isActive = json['is_active'];
     token = json['token'];
+    showContact = json['show_contact'];
   }
 
   Map<String, dynamic> toJson() {

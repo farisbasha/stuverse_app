@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "199365110321",
+    "project_id": "stuverse-app",
+    "storage_bucket": "stuverse-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199365110321:android:62edcf5f6cd6673f1bc310",
+        "android_client_info": {
+          "package_name": "com.example.stuverse_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199365110321-k47sfqoh1qg2t7g3k6r3peqjtuh0lfbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0GAwn99YU7FY1LSG1peQKMqlkRFsUolI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199365110321-k47sfqoh1qg2t7g3k6r3peqjtuh0lfbc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199365110321-jikpcrds02lvke4tdsjlilmsr97j7llm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.stuverseApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

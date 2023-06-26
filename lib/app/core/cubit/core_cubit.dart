@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 enum ThemeModeType { light, dark, system }
 
 class CoreCubit extends Cubit<ThemeMode> {
-  CoreCubit() : super(ThemeMode.system) {
+  CoreCubit() : super(ThemeMode.dark) {
     _loadThemeMode();
     _loadIsFirstTime();
   }

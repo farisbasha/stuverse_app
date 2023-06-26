@@ -1,14 +1,18 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:stuverse_app/utils/api_client.dart';
+import 'package:stuverse_app/utils/common_utils.dart';
+import 'package:stuverse_app/utils/secrets.dart';
 
 import '../models/user.dart';
-import '../utils/api_endpoints.dart';
+import '../services/api_endpoints.dart';
 
 part 'auth_state.dart';
 
@@ -18,7 +22,6 @@ class AuthCubit extends Cubit<AuthState> {
   void loginUser({required String email, required String password}) async {
     emit(AuthLoginLoading());
     try {
-      await Future.delayed(const Duration(seconds: 2));
       final resp = await dioClient.post(
         loginApiUrl,
         data: {
@@ -29,6 +32,7 @@ class AuthCubit extends Cubit<AuthState> {
       final user = User.fromJson(resp.data);
       emit(AuthSuccess(user));
       storeUserTokenOnDevice(user.token);
+      setFcmToken(user: user);
     } on DioException catch (e) {
       final response = e.response;
       if (response == null) {
@@ -47,7 +51,6 @@ class AuthCubit extends Cubit<AuthState> {
   void sendResetPassLink({required String email}) async {
     emit(AuthResetPasswordLoading());
     try {
-      await Future.delayed(const Duration(seconds: 2));
       await dioClient.post(
         resetPasswordApiUrl,
         data: {
@@ -86,7 +89,7 @@ class AuthCubit extends Cubit<AuthState> {
     File? image,
   }) async {
     emit(AuthRegisterLoading());
-    await Future.delayed(const Duration(seconds: 3));
+
     try {
       final formData = FormData.fromMap({
         'first_name': firstName,
@@ -143,6 +146,7 @@ class AuthCubit extends Cubit<AuthState> {
       userData["token"] = token;
       final user = User.fromJson(userData);
       emit(AuthSuccess(user));
+      setFcmToken(user: user);
     } catch (_) {
       print("Unable to get user data using token");
       emit(AuthUserNotLoaded());
@@ -165,13 +169,66 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void checkIfUserIsLoggedIn() async {
-    await Future.delayed(const Duration(seconds: 2));
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString("token");
     if (token != null) {
       getUserDataUsingToken(token: token);
     } else {
       emit(AuthUserNotLoaded());
+    }
+  }
+
+  void updateAuthUser(User user) {
+    emit(AuthSuccess(user));
+  }
+
+  void setFcmToken({
+    required User user,
+  }) async {
+    try {
+      String platform = 'android';
+      if (kIsWeb) {
+        platform = 'web';
+      } else {
+        if (Platform.isIOS) {
+          // iOS-specific code
+          platform = 'ios';
+        }
+      }
+
+      String? fcmToken = await FirebaseMessaging.instance
+          .getToken(vapidKey: kIsWeb ? vapidFcmKey : null);
+
+      if (fcmToken == null) {
+        print("FCM Token is null");
+        return;
+      }
+
+      final resp = await dioClient.post(
+        registerFCMAPI,
+        data: {
+          'name': user.username,
+          'registration_id': fcmToken,
+          'type': platform,
+        },
+        options: Options(
+          headers: {
+            'Authorization': 'Token ${user.token}',
+          },
+        ),
+      );
+
+      print(resp.data);
+      print("FCM Token set successfully");
+    } on DioException catch (e) {
+      final response = e.response;
+      if (response == null) {
+        print(e.toString());
+      } else {
+        print(e.response!.data);
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 }
