@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:stuverse_app/app/ads/views/boost_ad_screen.dart';
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/chat/cubit/chat_home_cubit.dart';
 import 'package:stuverse_app/app/chat/views/chat_screen.dart';
@@ -357,7 +358,18 @@ class ProductDetailScreen extends StatelessWidget {
             FilledButton.icon(
               icon: Icon(FontAwesomeIcons.moneyBill),
               label: Text("Boost Ad"),
-              onPressed: () {},
+              onPressed: () {
+                CommonUtils.showDialogbox(context,
+                    title: "Sorry",
+                    subtitle: "Feature not available yet",
+                    isError: true);
+
+                // CommonUtils.navigatePush(
+                //     context,
+                //     BoostAdScreen(
+                //       product: product,
+                //     ));
+              },
             ),
           SizedBox(
             height: 10,

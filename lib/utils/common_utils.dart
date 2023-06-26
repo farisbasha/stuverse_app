@@ -57,6 +57,7 @@ class CommonUtils {
                       : Theme.of(context).colorScheme.onBackground)),
           content: subtitle != null
               ? Text(subtitle,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground))
               : null,

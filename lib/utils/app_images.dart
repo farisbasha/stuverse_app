@@ -11,4 +11,5 @@ class AppImages {
   static const educationLottie = 'assets/images/education.json';
   static const empty = 'assets/images/empty.svg';
   static const ai = 'assets/images/ai.svg';
+  static const bot = 'assets/images/bot.png';
 }

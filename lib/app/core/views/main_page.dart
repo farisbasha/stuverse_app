@@ -15,6 +15,7 @@ import 'package:stuverse_app/app/chat/views/chat_view.dart';
 import 'package:stuverse_app/app/core/cubit/core_cubit.dart';
 import 'package:stuverse_app/app/home/views/home_view.dart';
 import 'package:stuverse_app/app/profile/views/profile_view.dart';
+import 'package:stuverse_app/utils/app_images.dart';
 
 import '../cubit/main_page_cubit.dart';
 import '../../bot/views/chat_bot_dialogue.dart';
@@ -116,15 +117,43 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           body: SafeArea(child: pages[state]),
-          floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                showAdaptiveDialog(
-                    context: context,
-                    builder: (context) {
-                      return ChatBotDialogue();
-                    });
-              },
-              child: Center(child: Icon(FontAwesomeIcons.message))),
+          floatingActionButton: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.primary,
+                width: 1,
+              ),
+            ),
+            child: FloatingActionButton(
+                backgroundColor: Theme.of(context).colorScheme.onInverseSurface,
+                onPressed: () {
+                  showAdaptiveDialog(
+                      context: context,
+                      builder: (context) {
+                        return ChatBotDialogue();
+                      });
+                },
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Image.asset(AppImages.bot),
+                      // Positioned(
+                      //   top: -5,
+                      //   right: -5,
+                      //   child: Icon(
+                      //     Icons.chat,
+                      //     color: Theme.of(context).colorScheme.onError,
+                      //     size: 20,
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ))),
+          ),
         );
       },
     );

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stuverse_app/app/ads/cubit/ads_cubit.dart';
+import 'package:stuverse_app/app/ads/cubit/boost/boost_cubit.dart';
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/bot/cubit/bot_cubit.dart';
 import 'package:stuverse_app/app/chat/cubit/chat_home_cubit.dart';
@@ -53,5 +54,8 @@ final blocProviderList = [
   ),
   BlocProvider<ChatScreenCubit>(
     create: (context) => ChatScreenCubit(),
+  ),
+  BlocProvider<BoostCubit>(
+    create: (context) => BoostCubit(),
   ),
 ];

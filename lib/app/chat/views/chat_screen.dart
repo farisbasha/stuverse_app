@@ -115,10 +115,15 @@ class _ChatScreenState extends State<ChatScreen> {
                             reverse: true,
                             itemBuilder: (BuildContext context, int index) {
                               final message = data[index].get("message");
+                              bool isSender =
+                                  data[index].get("sentBy") == _user.id;
                               return ChatMessageTile(
                                 time: data[index].get("sentAt"),
                                 message: message,
-                                isSender: data[index].get("sentBy") == _user.id,
+                                isSender: isSender,
+                                image: isSender
+                                    ? _user.image
+                                    : _conversation.receiver.image,
                               );
                             },
                           ),

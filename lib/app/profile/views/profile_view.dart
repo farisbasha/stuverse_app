@@ -83,13 +83,13 @@ class _ProfileViewState extends State<ProfileView> {
                   CommonUtils.navigatePush(context, ProductAddEditScreen());
                 },
               ),
-              ProfileTile(
-                title: "Boost Product",
-                icon: FontAwesomeIcons.moneyBill,
-                onTap: () {
-                  CommonUtils.navigatePush(context, ProductAddEditScreen());
-                },
-              ),
+              // ProfileTile(
+              //   title: "Boost Product",
+              //   icon: FontAwesomeIcons.moneyBill,
+              //   onTap: () {
+              //     CommonUtils.navigatePush(context, ProductAddEditScreen());
+              //   },
+              // ),
               ProfileTile(
                   title: "Logout",
                   icon: Icons.logout,
@@ -123,7 +123,7 @@ class ProfileTile extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: ListTile(
         title: Text(title),
-        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         tileColor: Theme.of(context).colorScheme.onInverseSurface,
         trailing: Icon(
           Icons.chevron_right,

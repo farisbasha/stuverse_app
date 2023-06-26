@@ -26,7 +26,7 @@ class KeyPointCard extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(16)),
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

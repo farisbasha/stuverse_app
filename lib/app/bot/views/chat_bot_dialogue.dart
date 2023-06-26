@@ -6,6 +6,8 @@ import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/auth/models/user.dart';
 
 import 'package:stuverse_app/app/bot/models/bot_message.dart';
+import 'package:stuverse_app/app/core/widgets/svg_asset_image.dart';
+import 'package:stuverse_app/utils/app_images.dart';
 
 import '../widgets/message_tile.dart';
 import '../cubit/bot_cubit.dart';
@@ -47,30 +49,57 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: Icon(Icons.close),
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const SizedBox(),
+                    Expanded(
+                        child: Text(
+                      "Chat Bot",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    )),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icon(Icons.close),
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    itemCount: messageList.length,
-                    reverse: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      final message = messageList[index];
+                if (messageList.isEmpty)
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SvgAssetImage(
+                            assetName: AppImages.ai,
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 100,
+                            height: 100,
+                          ),
+                          Text("No messages yet"),
+                        ],
+                      ),
+                    ),
+                  )
+                else
+                  Expanded(
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: messageList.length,
+                      reverse: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        final message = messageList[index];
 
-                      return MessageTile(
-                        message: message,
-                        isSender: !message.isBot,
-                      );
-                    },
+                        return MessageTile(
+                          message: message,
+                          isSender: !message.isBot,
+                          image: !message.isBot ? _user.image : AppImages.bot,
+                        );
+                      },
+                    ),
                   ),
-                ),
                 Divider(),
                 IgnorePointer(
                   ignoring: state is BotLoading,
