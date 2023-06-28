@@ -10,9 +10,7 @@ import 'package:stuverse_app/app/auth/models/user.dart';
 import 'package:stuverse_app/app/core/cubit/main_page_cubit.dart';
 import 'package:stuverse_app/app/core/models/product_category.dart';
 import 'package:stuverse_app/app/core/views/main_page.dart';
-import 'package:stuverse_app/app/core/widgets/svg_asset_image.dart';
 import 'package:stuverse_app/app/home/cubit/home_cubit.dart';
-import 'package:stuverse_app/utils/app_images.dart';
 
 import 'package:stuverse_app/utils/common_utils.dart';
 
@@ -293,7 +291,7 @@ class _ProductAddEditScreenState extends State<ProductAddEditScreen> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.monetization_on),
+                            prefixIcon: Icon(FontAwesomeIcons.indianRupeeSign),
                             labelText: 'Price',
                             hintText: 'Enter Desired Price',
                           ),
@@ -307,7 +305,7 @@ class _ProductAddEditScreenState extends State<ProductAddEditScreen> {
                               color: theme.colorScheme.primary,
                             ),
                           ),
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Column(
                             children: [
                               Row(
@@ -316,13 +314,13 @@ class _ProductAddEditScreenState extends State<ProductAddEditScreen> {
                                     "Categories",
                                     style: textTheme.titleMedium,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   TextButton.icon(
                                     onPressed: () {
                                       openSelectCategoryDialogue();
                                     },
                                     icon: const Icon(Icons.add),
-                                    label: Text("Add Category"),
+                                    label: const Text("Add Category"),
                                   ),
                                 ],
                               ),

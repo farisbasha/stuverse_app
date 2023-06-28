@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stuverse_app/app/core/widgets/svg_asset_image.dart';
 
 class KeyPointCard extends StatelessWidget {
   const KeyPointCard({

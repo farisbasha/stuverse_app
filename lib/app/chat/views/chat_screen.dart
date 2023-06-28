@@ -13,7 +13,7 @@ import 'package:stuverse_app/utils/app_images.dart';
 import '../widgets/chat_message_tile.dart';
 
 class ChatScreen extends StatefulWidget {
-  ChatScreen({super.key, required this.conversation});
+  const ChatScreen({super.key, required this.conversation});
   final Conversation conversation;
   static bool isActive = false;
 
@@ -56,12 +56,10 @@ class _ChatScreenState extends State<ChatScreen> {
         );
   }
 
-  bool _showSnackbar = true;
-
   late String _userName;
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
-  bool _isLoading = false;
+
   late final Stream<QuerySnapshot> _messageStream;
   late User _user;
   @override
@@ -93,7 +91,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Something went wrong"),
+                            const Text("Something went wrong"),
                             SvgAssetImage(
                               assetName: AppImages.empty,
                               color: Theme.of(context).colorScheme.primary,
@@ -115,15 +113,25 @@ class _ChatScreenState extends State<ChatScreen> {
                             reverse: true,
                             itemBuilder: (BuildContext context, int index) {
                               final message = data[index].get("message");
-                              bool isSender =
+                              final isSender =
                                   data[index].get("sentBy") == _user.id;
+
+                              String image = "";
+
+                              if (isSender) {
+                                image = _user.image;
+                              } else {
+                                if (widget.conversation.sender.id == _user.id) {
+                                  image = widget.conversation.receiver.image;
+                                } else {
+                                  image = widget.conversation.sender.image;
+                                }
+                              }
                               return ChatMessageTile(
                                 time: data[index].get("sentAt"),
                                 message: message,
                                 isSender: isSender,
-                                image: isSender
-                                    ? _user.image
-                                    : _conversation.receiver.image,
+                                image: image,
                               );
                             },
                           ),
@@ -143,7 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     );
                   }),
-              Divider(),
+              const Divider(),
               BlocBuilder<ChatScreenCubit, ChatScreenState>(
                 builder: (context, state) {
                   return IgnorePointer(
@@ -158,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: TextField(
                                 controller: _textController,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   hintText: 'Type a message',
                                   contentPadding:
                                       EdgeInsets.symmetric(horizontal: 16.0),
@@ -172,7 +180,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 size: 30)
                           else
                             IconButton(
-                              icon: Icon(Icons.send),
+                              icon: const Icon(Icons.send),
                               onPressed: () {
                                 if (_textController.text.isNotEmpty) {
                                   context.read<ChatScreenCubit>().sendMessage(
@@ -195,7 +203,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   );
                 },
               ),
-              SizedBox(height: 10)
+              const SizedBox(height: 10)
             ],
           ),
         ),

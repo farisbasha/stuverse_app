@@ -1,11 +1,7 @@
-import 'dart:io';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stuverse_app/utils/secrets.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class CommonUtils {
@@ -141,13 +137,13 @@ class CommonUtils {
     }
   }
 
-  static bool isKeyboardShowing() {
-    if (WidgetsBinding.instance != null) {
-      return WidgetsBinding.instance.window.viewInsets.bottom > 0;
-    } else {
-      return false;
-    }
-  }
+  // static bool isKeyboardShowing() {
+  //   if (WidgetsBinding.instance != null) {
+  //     return WidgetsBinding.instance.window.viewInsets.bottom > 0;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   static closeKeyboard(BuildContext context) {
     FocusScopeNode currentFocus = FocusScope.of(context);
@@ -163,7 +159,7 @@ class CommonUtils {
     final diff = now.difference(dateTime);
 
     if (diff.inDays >= 1) {
-      final formatter = DateFormat('h:mm');
+      // final formatter = DateFormat('h:mm');
       return '${diff.inDays} day${diff.inDays > 1 ? 's' : ''} ago';
     } else {
       final formatter = DateFormat('h:mm a');

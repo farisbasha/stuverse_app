@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
-import 'package:stuverse_app/app/core/models/product.dart';
-import 'package:stuverse_app/app/core/models/product_category.dart';
 import 'package:stuverse_app/app/core/widgets/product_card.dart';
 import 'package:stuverse_app/app/search/views/search_screen.dart';
 
@@ -106,8 +103,6 @@ class HomeView extends StatelessWidget {
                                   hintText: "Search for products",
                                   prefixIcon: const Icon(Icons.search),
                                   suffixIcon: FilledButton(
-                                    child:
-                                        const Icon(Icons.filter_alt_outlined),
                                     style: ButtonStyle(
                                       padding: MaterialStateProperty.all(
                                         const EdgeInsets.all(0),
@@ -119,6 +114,8 @@ class HomeView extends StatelessWidget {
                                       ),
                                     ),
                                     onPressed: () {},
+                                    child:
+                                        const Icon(Icons.filter_alt_outlined),
                                   ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),

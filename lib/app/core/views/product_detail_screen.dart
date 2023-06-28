@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:stuverse_app/app/ads/views/boost_ad_screen.dart';
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/chat/cubit/chat_home_cubit.dart';
 import 'package:stuverse_app/app/chat/views/chat_screen.dart';
-import 'package:stuverse_app/app/core/cubit/main_page_cubit.dart';
-import 'package:stuverse_app/app/core/views/main_page.dart';
 import 'package:stuverse_app/app/core/views/product_add_edit_screen.dart';
 import 'package:stuverse_app/utils/common_utils.dart';
 
@@ -35,7 +32,7 @@ class ProductDetailScreen extends StatelessWidget {
                 CommonUtils.navigatePush(
                     context, ProductAddEditScreen(product: product));
               },
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
             )
           else
             FilledButton.icon(
@@ -45,7 +42,7 @@ class ProductDetailScreen extends StatelessWidget {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                       Theme.of(context).colorScheme.error),
-                  padding: MaterialStateProperty.all(EdgeInsets.all(8)),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
                 ),
                 onPressed: () {
                   showDialog(
@@ -68,15 +65,15 @@ class ProductDetailScreen extends StatelessWidget {
                             return IgnorePointer(
                               ignoring: state is ReportLoading,
                               child: AlertDialog(
-                                title: Text("Report"),
-                                content: Text(
+                                title: const Text("Report"),
+                                content: const Text(
                                     "Are you sure you want to report this user?"),
                                 actions: [
                                   TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text("Cancel")),
+                                      child: const Text("Cancel")),
                                   TextButton(
                                       onPressed: () {
                                         context.read<ReportCubit>().reportUser(
@@ -94,7 +91,7 @@ class ProductDetailScreen extends StatelessWidget {
                                                   .colorScheme
                                                   .primary,
                                               size: 20)
-                                          : Text("Report")),
+                                          : const Text("Report")),
                                 ],
                               ),
                             );
@@ -102,11 +99,11 @@ class ProductDetailScreen extends StatelessWidget {
                         );
                       });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.report,
                   size: 17,
                 )),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
         ],
@@ -138,7 +135,7 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -167,7 +164,7 @@ class ProductDetailScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Wrap(
@@ -179,14 +176,14 @@ class ProductDetailScreen extends StatelessWidget {
                                 ))
                             .toList(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         product.description,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text("Posted on",
@@ -197,7 +194,7 @@ class ProductDetailScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onSurface,
                               )),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
@@ -218,7 +215,7 @@ class ProductDetailScreen extends StatelessWidget {
                           child: Center(
                             child: Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 CircleAvatar(
@@ -226,7 +223,7 @@ class ProductDetailScreen extends StatelessWidget {
                                   backgroundImage: CachedNetworkImageProvider(
                                       product.seller.image),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Expanded(
@@ -242,29 +239,26 @@ class ProductDetailScreen extends StatelessWidget {
                                             ?.copyWith(
                                                 fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Text(
-                                        product.seller.city +
-                                            ", " +
-                                            product.seller.district,
+                                        "${product.seller.city}, ${product.seller.district}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelMedium,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Text(
-                                        "Year Joined : " +
-                                            CommonUtils.getYear(
-                                                product.seller.dateJoined),
+                                        "Year Joined : ${CommonUtils.getYear(
+                                                product.seller.dateJoined)}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelMedium,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       if (product
@@ -282,7 +276,7 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                      SizedBox(
+                      const SizedBox(
                         height: 60,
                       ),
                     ],
@@ -324,8 +318,8 @@ class ProductDetailScreen extends StatelessWidget {
                           );
                         }
                         return FilledButton.icon(
-                          icon: Icon(Icons.chat),
-                          label: Text("Chat"),
+                          icon: const Icon(Icons.chat),
+                          label: const Text("Chat"),
                           onPressed: () {
                             context.read<ChatHomeCubit>().getConversation(
                                   product: product,
@@ -337,14 +331,14 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
                   if (product.seller.showContact)
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                   if (product.seller.showContact)
                     Expanded(
                       child: FilledButton.icon(
-                        icon: Icon(Icons.call),
-                        label: Text("Call"),
+                        icon: const Icon(Icons.call),
+                        label: const Text("Call"),
                         onPressed: () {
                           CommonUtils.launchPhone(
                               context, product.seller.mobile);
@@ -356,8 +350,8 @@ class ProductDetailScreen extends StatelessWidget {
             )
           else
             FilledButton.icon(
-              icon: Icon(FontAwesomeIcons.moneyBill),
-              label: Text("Boost Ad"),
+              icon: const Icon(FontAwesomeIcons.moneyBill),
+              label: const Text("Boost Ad"),
               onPressed: () {
                 CommonUtils.showDialogbox(context,
                     title: "Sorry",
@@ -371,7 +365,7 @@ class ProductDetailScreen extends StatelessWidget {
                 //     ));
               },
             ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],

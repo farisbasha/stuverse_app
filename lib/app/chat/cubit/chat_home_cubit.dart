@@ -18,7 +18,7 @@ class ChatHomeCubit extends Cubit<ChatHomeState> {
     emit(ChatHomeLoading());
     try {
       final senderResp =
-          await dioClient.get(conversationListAPIUrl + "?sender=$userId");
+          await dioClient.get("$conversationListAPIUrl?sender=$userId");
       final data = senderResp.data;
 
       final List<Conversation> sendConversations = [];
@@ -29,7 +29,7 @@ class ChatHomeCubit extends Cubit<ChatHomeState> {
         sendConversations.add(conversation);
       }
       final recvResp =
-          await dioClient.get(conversationListAPIUrl + "?receiver=$userId");
+          await dioClient.get("$conversationListAPIUrl?receiver=$userId");
       for (var item in recvResp.data) {
         final conversation = Conversation.fromJson(item);
 

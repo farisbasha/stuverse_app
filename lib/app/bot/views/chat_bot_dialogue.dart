@@ -45,7 +45,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
         }
         return SafeArea(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -63,7 +63,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.close),
+                      icon: const Icon(Icons.close),
                     )
                   ],
                 ),
@@ -78,7 +78,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
                             width: 100,
                             height: 100,
                           ),
-                          Text("No messages yet"),
+                          const Text("No messages yet"),
                         ],
                       ),
                     ),
@@ -100,7 +100,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
                       },
                     ),
                   ),
-                Divider(),
+                const Divider(),
                 IgnorePointer(
                   ignoring: state is BotLoading,
                   child: Container(
@@ -111,7 +111,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
                         Expanded(
                           child: TextField(
                             controller: _textController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'Type a message',
                               contentPadding:
                                   EdgeInsets.symmetric(horizontal: 16.0),
@@ -124,7 +124,7 @@ class _ChatBotDialogueState extends State<ChatBotDialogue> {
                               size: 30)
                         else
                           IconButton(
-                            icon: Icon(Icons.send),
+                            icon: const Icon(Icons.send),
                             onPressed: () {
                               if (_textController.text.isNotEmpty) {
                                 context.read<BotCubit>().sendMessageToBot(

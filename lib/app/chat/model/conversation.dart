@@ -35,20 +35,20 @@ class Conversation {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['created_at'] = createdAt;
-    _data['product'] = product.toJson();
-    _data['sender'] = sender.toJson();
-    _data['receiver'] = receiver.toJson();
-    _data['is_read'] = isRead;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['created_at'] = createdAt;
+    data['product'] = product.toJson();
+    data['sender'] = sender.toJson();
+    data['receiver'] = receiver.toJson();
+    data['is_read'] = isRead;
     if (recent_message_sender != null) {
-      _data['recent_message_sender'] = recent_message_sender!.toJson();
+      data['recent_message_sender'] = recent_message_sender!.toJson();
     }
-    _data['recent_message'] = recent_message;
-    _data['recent_message_time'] = recent_message_time;
+    data['recent_message'] = recent_message;
+    data['recent_message_time'] = recent_message_time;
 
-    return _data;
+    return data;
   }
 }
 
@@ -72,12 +72,12 @@ class ConvProd {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['title'] = title;
-    _data['image'] = image;
-    _data['price'] = price;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['image'] = image;
+    data['price'] = price;
+    return data;
   }
 }
 
@@ -101,11 +101,11 @@ class ChatUser {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['first_name'] = firstName;
-    _data['image'] = image;
-    _data['date_joined'] = dateJoined;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
+    data['image'] = image;
+    data['date_joined'] = dateJoined;
+    return data;
   }
 }

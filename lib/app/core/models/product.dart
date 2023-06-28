@@ -43,18 +43,18 @@ class Product {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['title'] = title;
-    _data['description'] = description;
-    _data['image'] = image;
-    _data['is_active'] = isActive;
-    _data['is_boosted'] = isBoosted;
-    _data['created_at'] = createdAt;
-    _data['updated_at'] = updatedAt;
-    _data['seller'] = seller.toJson();
-    _data['categories'] = categories.map((e) => e.toJson()).toList();
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['title'] = title;
+    data['description'] = description;
+    data['image'] = image;
+    data['is_active'] = isActive;
+    data['is_boosted'] = isBoosted;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['seller'] = seller.toJson();
+    data['categories'] = categories.map((e) => e.toJson()).toList();
+    return data;
   }
 }
 
@@ -96,14 +96,14 @@ class Seller {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['first_name'] = firstName;
-    _data['last_name'] = lastName;
-    _data['city'] = city;
-    _data['district'] = district;
-    _data['image'] = image;
-    _data['date_joined'] = dateJoined;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['city'] = city;
+    data['district'] = district;
+    data['image'] = image;
+    data['date_joined'] = dateJoined;
+    return data;
   }
 }

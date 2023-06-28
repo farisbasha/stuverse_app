@@ -45,20 +45,20 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['first_name'] = firstName;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['first_name'] = firstName;
 
-    _data['username'] = username;
-    _data['mobile'] = mobile;
-    _data['email'] = email;
-    _data['city'] = city;
-    _data['district'] = district;
-    _data['institution_name'] = institutionName;
-    _data['image'] = image;
+    data['username'] = username;
+    data['mobile'] = mobile;
+    data['email'] = email;
+    data['city'] = city;
+    data['district'] = district;
+    data['institution_name'] = institutionName;
+    data['image'] = image;
 
-    _data['is_active'] = isActive;
-    _data['token'] = token;
-    return _data;
+    data['is_active'] = isActive;
+    data['token'] = token;
+    return data;
   }
 }

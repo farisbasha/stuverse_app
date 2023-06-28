@@ -1,8 +1,6 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:lottie/lottie.dart';
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/auth/views/login_screen.dart';
 import 'package:stuverse_app/app/core/views/main_page.dart';

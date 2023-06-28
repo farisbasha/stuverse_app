@@ -50,7 +50,7 @@ class _UserAdsViewState extends State<UserAdsView>
       },
       builder: (context, state) {
         if (state is AdsLoading) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is AdsLoaded) {

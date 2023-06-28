@@ -64,7 +64,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       Row(
@@ -81,7 +81,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Introducing AI",
@@ -89,7 +89,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                               .textTheme
                               .titleLarge!
                               .copyWith(fontWeight: FontWeight.bold)),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text("Description Generator",
@@ -106,7 +106,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                         height: MediaQuery.of(context).size.height * 0.2,
                       ),
                       //Instructions
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text(
@@ -114,7 +114,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                         style: Theme.of(context).textTheme.labelSmall,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       ConfettiWidget(
@@ -153,7 +153,7 @@ class _AIDescriptionDialogueState extends State<AIDescriptionDialogue> {
                           maxLines: 5,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       if (state is AiDescLoading)

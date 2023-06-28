@@ -31,7 +31,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
         'seller': sellerId,
         'is_active': isActive,
       });
-      final response = await dioClient.post(
+      await dioClient.post(
         productAddAPIUrl,
         data: formData,
       );
@@ -75,7 +75,7 @@ class ProductAddEditCubit extends Cubit<ProductAddEditState> {
             .add(MapEntry('image', await MultipartFile.fromFile(image.path)));
       }
 
-      final response = await dioClient.patch(
+      await dioClient.patch(
         productEditDeleteAPIUrl.replaceFirst('<id>', id.toString()),
         data: formData,
       );

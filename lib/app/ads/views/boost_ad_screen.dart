@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:stuverse_app/app/auth/models/user.dart';
 import 'package:stuverse_app/app/core/models/product.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/boost/boost_cubit.dart';
 
 class BoostAdScreen extends StatelessWidget {
   const BoostAdScreen({super.key, required this.product});
@@ -16,9 +10,9 @@ class BoostAdScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Boost Ad"),
+        title: const Text("Boost Ad"),
       ),
-      body: Center(
+      body: const Center(
         child: Text("Boost Ad Screen"),
       ),
     );

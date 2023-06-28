@@ -84,9 +84,7 @@ class ProductCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            product.seller.city +
-                                ", " +
-                                product.seller.district,
+                            "${product.seller.city}, ${product.seller.district}",
                             style: theme.textTheme.labelSmall!.copyWith(
                                 color: theme.colorScheme.onSurface
                                     .withOpacity(0.6)),
@@ -104,7 +102,7 @@ class ProductCard extends StatelessWidget {
                               color: theme.colorScheme.tertiary,
                               borderRadius: BorderRadius.circular(8)),
                           padding:
-                              EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           child: Row(
                             children: [
                               Icon(

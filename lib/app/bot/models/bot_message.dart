@@ -21,12 +21,12 @@ class BotMessage {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['timestamp'] = timestamp;
-    _data['is_bot'] = isBot;
-    _data['content'] = content;
-    _data['conversation'] = conversation;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['timestamp'] = timestamp;
+    data['is_bot'] = isBot;
+    data['content'] = content;
+    data['conversation'] = conversation;
+    return data;
   }
 }

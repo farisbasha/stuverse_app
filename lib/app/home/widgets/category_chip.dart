@@ -1,9 +1,6 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:stuverse_app/app/core/models/product_category.dart';
-import 'package:stuverse_app/app/search/views/search_screen.dart';
-import 'package:stuverse_app/utils/common_utils.dart';
 
 class CategoryChip extends StatelessWidget {
   const CategoryChip({

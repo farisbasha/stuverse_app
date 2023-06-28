@@ -112,16 +112,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         child: Column(
                                           children: [
                                             ListTile(
-                                              leading: Icon(Icons.camera_alt),
-                                              title: Text("Camera"),
+                                              leading: const Icon(Icons.camera_alt),
+                                              title: const Text("Camera"),
                                               onTap: () {
                                                 getImage(
                                                     source: ImageSource.camera);
                                               },
                                             ),
                                             ListTile(
-                                              leading: Icon(Icons.photo),
-                                              title: Text("Gallery"),
+                                              leading: const Icon(Icons.photo),
+                                              title: const Text("Gallery"),
                                               onTap: () {
                                                 getImage(
                                                     source:

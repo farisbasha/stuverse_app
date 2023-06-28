@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(Icons.brightness_4),
+            icon: const Icon(Icons.brightness_4),
             onPressed: () {
               context.read<CoreCubit>().toggleThemeMode();
             },

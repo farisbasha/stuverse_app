@@ -4,7 +4,6 @@ import 'package:filter_list/filter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:stuverse_app/app/core/models/product.dart';
 import 'package:stuverse_app/app/core/models/product_category.dart';
 import 'package:stuverse_app/app/core/widgets/product_card.dart';
 import 'package:stuverse_app/app/core/widgets/svg_asset_image.dart';
@@ -82,7 +81,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     clipBehavior: Clip.none,
                     children: [
                       FilledButton(
-                        child: const Icon(Icons.filter_alt_outlined),
                         style: ButtonStyle(
                             padding: MaterialStateProperty.all(
                           const EdgeInsets.all(0),
@@ -90,6 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         onPressed: () {
                           openFilterDialog();
                         },
+                        child: const Icon(Icons.filter_alt_outlined),
                       ),
                       if (_selectedCategoryList.isNotEmpty)
                         Positioned(

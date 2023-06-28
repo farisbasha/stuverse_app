@@ -3,12 +3,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:stuverse_app/utils/api_client.dart';
-import 'package:stuverse_app/utils/common_utils.dart';
 import 'package:stuverse_app/utils/secrets.dart';
 
 import '../models/user.dart';
@@ -39,7 +37,14 @@ class AuthCubit extends Cubit<AuthState> {
         print(e.toString());
         emit(AuthLoginFailure("Server Error"));
       } else {
-        print(e.response!.data);
+        print(e.response?.data ?? "No data");
+        if (response.data != null) {
+          if (response.statusCode == 401) {
+            emit(AuthLoginFailure(response.data['detail']));
+            return;
+          }
+        }
+
         return emit(AuthLoginFailure("Invalid Credentials"));
       }
     } catch (e) {

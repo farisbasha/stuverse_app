@@ -62,13 +62,13 @@ class _CoversationTileState extends State<CoversationTile> {
               widget.isSender
                   ? widget.conversation.receiver.firstName
                   : widget.conversation.sender.firstName,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(widget.conversation.product.title,
-                  style: TextStyle(fontSize: 10)),
-              SizedBox(height: 5),
+                  style: const TextStyle(fontSize: 10)),
+              const SizedBox(height: 5),
               Builder(builder: (context) {
                 String txt = "";
                 if (widget.conversation.recent_message_sender != null) {
@@ -76,20 +76,19 @@ class _CoversationTileState extends State<CoversationTile> {
                       widget.user.id) {
                     txt = "You: ";
                   } else {
-                    txt = widget.conversation.recent_message_sender!.firstName +
-                        ": ";
+                    txt = "${widget.conversation.recent_message_sender!.firstName}: ";
                   }
                 }
                 return Row(
                   children: [
                     Text(
                       txt,
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                     Expanded(
                       child: Text(
                         widget.conversation.recent_message ?? "",
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -97,7 +96,7 @@ class _CoversationTileState extends State<CoversationTile> {
                       Text(
                         CommonUtils.formatChatDate(
                             widget.conversation.recent_message_time!),
-                        style: TextStyle(fontSize: 10),
+                        style: const TextStyle(fontSize: 10),
                       ),
                   ],
                 );
@@ -107,7 +106,7 @@ class _CoversationTileState extends State<CoversationTile> {
           trailing: Stack(
             clipBehavior: Clip.none,
             children: [
-              Icon(Icons.arrow_forward_ios),
+              const Icon(Icons.arrow_forward_ios),
               if (widget.conversation.recent_message_sender != null)
                 if (!widget.conversation.isRead &&
                     widget.conversation.recent_message_sender!.id !=

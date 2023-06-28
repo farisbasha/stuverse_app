@@ -5,6 +5,8 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:stuverse_app/app/auth/cubit/auth_cubit.dart';
 import 'package:stuverse_app/app/auth/models/user.dart';
 import 'package:stuverse_app/app/chat/cubit/chat_home_cubit.dart';
+import 'package:stuverse_app/app/core/widgets/svg_asset_image.dart';
+import 'package:stuverse_app/utils/app_images.dart';
 
 import 'package:stuverse_app/utils/common_utils.dart';
 
@@ -91,9 +93,24 @@ class _ChatViewState extends State<ChatView>
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
+                            if (sendMsgs.isEmpty)
+                              Center(
+                                child: Column(
+                                  children: [
+                                    SvgAssetImage(
+                                      assetName: AppImages.empty,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                    const Text("No messages yet"),
+                                  ],
+                                ),
+                              ),
                             for (final conversation in sendMsgs)
                               CoversationTile(
                                 conversation: conversation,
@@ -112,9 +129,24 @@ class _ChatViewState extends State<ChatView>
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
+                            if (receivedMsgs.isEmpty)
+                              Center(
+                                child: Column(
+                                  children: [
+                                    SvgAssetImage(
+                                      assetName: AppImages.empty,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                    const Text("No messages yet"),
+                                  ],
+                                ),
+                              ),
                             for (final conversation in receivedMsgs)
                               CoversationTile(
                                 conversation: conversation,
