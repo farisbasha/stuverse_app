@@ -1,12 +1,14 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = FlexThemeData.light(
-    scheme: FlexScheme.blueWhale,
-    surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
-    blendLevel: 1,
+    scheme: FlexScheme.dellGenoa,
+    surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+    blendLevel: 7,
     subThemesData: const FlexSubThemesData(
+      blendTextTheme: true,
       useTextTheme: true,
       useM2StyleDividerInM3: true,
       defaultRadius: 12.0,
@@ -19,7 +21,7 @@ class AppTheme {
       unselectedToggleIsColored: true,
       sliderValueTinted: true,
       inputDecoratorSchemeColor: SchemeColor.primary,
-      inputDecoratorBackgroundAlpha: 31,
+      inputDecoratorBackgroundAlpha: 43,
       inputDecoratorUnfocusedHasBorder: false,
       inputDecoratorFocusedBorderWidth: 1.0,
       inputDecoratorPrefixIconSchemeColor: SchemeColor.primary,
@@ -56,18 +58,19 @@ class AppTheme {
     keyColors: const FlexKeyColors(
       useSecondary: true,
       useTertiary: true,
-      keepPrimary: true,
     ),
-    tones: FlexTones.jolly(Brightness.light),
+    tones: const FlexTones.light(),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
+
     useMaterial3: true,
+    swapLegacyOnMaterial3: true,
     // To use the Playground font, add GoogleFonts package and uncomment
-    // fontFamily: GoogleFonts.notoSans().fontFamily,
+    fontFamily: GoogleFonts.montserrat().fontFamily,
   );
 
   static final ThemeData darkTheme = FlexThemeData.dark(
-    scheme: FlexScheme.blueWhale,
-    surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+    scheme: FlexScheme.dellGenoa,
+    surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     blendLevel: 2,
     subThemesData: const FlexSubThemesData(
       blendTextTheme: true,
@@ -121,10 +124,10 @@ class AppTheme {
       useSecondary: true,
       useTertiary: true,
     ),
-    tones: FlexTones.jolly(Brightness.dark),
+    tones: FlexTones.ultraContrast(Brightness.dark),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     // To use the Playground font, add GoogleFonts package and uncomment
-    // fontFamily: GoogleFonts.notoSans().fontFamily,
+    fontFamily: GoogleFonts.montserrat().fontFamily,
   );
 }
