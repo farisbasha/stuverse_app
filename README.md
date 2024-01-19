@@ -59,6 +59,8 @@ Engage with users effectively by sending promotional notifications to everyone o
 
 ![Django Backend Folder Structure](https://media.licdn.com/dms/image/D4D22AQGESxsdDf2HmQ/feedshare-shrink_800/0/1687867224039?e=1708560000&v=beta&t=FBsiRYhhK-mu8T_8zexboR6IMIAcbpReiRQZ0Qx9gCI)
 
+**Note**: Backend Repo is private
+
 ## Getting Started
 
 To get started with the Student Marketplace App, follow these steps:
